@@ -1,10 +1,10 @@
-import http from "http";
 import url from "url";
 import bot from "./telegramBot/telegramBot.js";
 import getKataList from "./controller/kata/kataController.js";
 import cheerio from "cheerio";
 import fs from "fs";
 import string from "./data/string/string.js";
+import https from "https";
 
 function start(route, handle) {
   function onRequest(request, response) {
@@ -14,7 +14,7 @@ function start(route, handle) {
     route(handle, pathname, response, query); // injected function call
   }
 
-  http.createServer(onRequest).listen(8888);
+  https.createServer(onRequest).listen(8888);
 
   console.log('server has started.');
 
@@ -26,7 +26,6 @@ function start(route, handle) {
   async function crawling() {
       await getKataList().then(async html => {
         let newList = [];
-        let a = {};
         const $ = cheerio.load(html.data);
 
         //기존 리스트와 비교하여 새로 추가되면 알림!
