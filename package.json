@@ -1,0 +1,23 @@
+{
+  "name": "tennis_crawler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^18.7.5",
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "http": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "node-telegram-bot-api": "^0.58.0",
+    "telegram-api-bot": "^1.0.14"
+  },
+  "type": "module"
+}
