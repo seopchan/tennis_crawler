@@ -39,7 +39,7 @@ bot.onText(/\/검색 (.+)/, async (msg, match) => {
       + ulList.toString()
       + string.LINE
       + isExist
-      + string.RESERVATION
+      + string.RESERVATION_KATA
     );
   });
 });
@@ -63,7 +63,7 @@ bot.onText(/\/검색$/, async (msg) => {
       string.CURRENT
       + ulList.toString()
       + string.LINE
-      + string.RESERVATION
+      + string.RESERVATION_KATA
     );
   });
 });
