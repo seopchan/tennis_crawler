@@ -138,8 +138,10 @@ function start(route, handle) {
       const $bodyList = $("body > center > table:nth-child(2) > tbody > tr > td:nth-child(1) > table:nth-child(15) > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td.left_menu_btn > a");
       $bodyList.each(function (i, elem) {
         const title = commaToHotPoint($(this).attr("title").trim());
+        const $isStart = $(`body > center > table:nth-child(2) > tbody > tr > td:nth-child(1) > table:nth-child(15) > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr:nth-child(${(i+1)+i}) > td.left_menu_btn > img`);
+        const isStart = Boolean("../skin/leftmenu/main_navi/img/apply.gif" === $isStart.attr("src").toString());
 
-        if (title) {
+        if (title && isStart) {
           newList.push(title + "\n");
         }
       });
