@@ -51,8 +51,8 @@ function start(route, handle) {
         }
       });
 
-      let isSame = false;
-      fs.readFile("competitionKata.txt", 'utf-8', (e, data) => {
+      await fs.readFile("competitionKata.txt", 'utf-8', (e, data) => {
+        let isSame = false;
         if (e) {
           console.log(e)
         } else {
@@ -72,14 +72,14 @@ function start(route, handle) {
               );
             }
           }
+
+          if (!isSame) {
+            fs.writeFile("competitionKata.txt", newList.toString(), 'utf8', () => {
+              console.log("writeFile_KATA");
+            });
+          }
         }
       });
-
-      if (!isSame) {
-        fs.writeFile("competitionKata.txt", newList.toString(), 'utf8', () => {
-          console.log("writeFile_KATA");
-        });
-      }
     });
   }
 
@@ -96,8 +96,8 @@ function start(route, handle) {
         }
       });
 
-      let isSame = false;
       fs.readFile("competitionKato.txt", 'utf-8', (e, data) => {
+        let isSame = false;
         if (e) {
           console.log(e)
         } else {
@@ -117,14 +117,14 @@ function start(route, handle) {
               );
             }
           }
+
+          if (!isSame) {
+            fs.writeFile("competitionKato.txt", newList.toString(), 'utf8', () => {
+              console.log("writeFile_KATO");
+            });
+          }
         }
       });
-
-      if (!isSame) {
-        fs.writeFile("competitionKato.txt", newList.toString(), 'utf8', () => {
-          console.log("writeFile_KATO");
-        });
-      }
     });
   }
 
@@ -147,8 +147,8 @@ function start(route, handle) {
       });
 
 
-      let isSame = false;
       fs.readFile("competitionKta.txt", 'utf-8', (e, data) => {
+        let isSame = false;
         if (e) {
           console.log(e)
         } else {
@@ -169,13 +169,13 @@ function start(route, handle) {
             }
           }
         }
-      });
 
-      if (!isSame) {
-        fs.writeFile("competitionKta.txt", newList.toString(), 'utf8', () => {
-          console.log("writeFile_KTA");
-        });
-      }
+        if (!isSame) {
+          fs.writeFile("competitionKta.txt", newList.toString(), 'utf8', () => {
+            console.log("writeFile_KTA");
+          });
+        }
+      });
     });
   }
 
@@ -186,7 +186,7 @@ function start(route, handle) {
   }
 
   //크롤링 반복 20초마다
-  setInterval(crawling, 20000);
+  setInterval(crawling, 5000);
 }
 
 export default start;
