@@ -186,7 +186,7 @@ function start(route, handle) {
   }
 
   //크롤링 반복 20초마다
-  setInterval(crawling, 5000);
+  setInterval(crawling, 20000);
 }
 
 export default start;
