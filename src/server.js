@@ -187,16 +187,14 @@ function start(route, handle) {
     });
   }
 
-  // async function crawling() {
-  //   crawlingKata();
-  //   crawlingKato();
-  //   crawlingKta();
-  // }
-  //
-  // //크롤링 반복 20초마다
-  // setInterval(crawling, 20000);
+  async function crawling() {
+    crawlingKata();
+    crawlingKato();
+    crawlingKta();
+  }
 
-  crawlingKato();
+  //크롤링 반복 20초마다
+  setInterval(crawling, 20000);
 }
 
 export default start;
