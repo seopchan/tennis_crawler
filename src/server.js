@@ -88,12 +88,20 @@ function start(route, handle) {
       let newList = [];
       const $ = cheerio.load(html.data);
 
-      const $bodyList = $("#containers > div:nth-child(1) > div > table > tbody > tr > td.title-sector > div.title > a");
+      const $bodyList = $("#container > div.main-content > div.mcontent > div.view-column > div > div");
+
       $bodyList.each(function (i, elem) {
-        const title = commaToHotPoint($(this).text().trim());
-        if (title) {
-          newList.push(title + "\n");
-        }
+        const $innerList = $(this).find("table")
+        $innerList.each(function (i, elem) {
+          const title = commaToHotPoint($(this).find("tbody > tr > td.title-sector > div.title > a").text().trim());
+
+          if (title) {
+            const $isStart = $(this).find("tbody > tr > td.part-sector > div > a > span").text().trim();
+            if ($isStart === "대회접수중") {
+              newList.push(title + "\n");
+            }
+          }
+        });
       });
 
       fs.readFile("competitionKato.txt", 'utf-8', (e, data) => {
@@ -179,14 +187,16 @@ function start(route, handle) {
     });
   }
 
-  async function crawling() {
-    crawlingKata();
-    crawlingKato();
-    crawlingKta();
-  }
+  // async function crawling() {
+  //   crawlingKata();
+  //   crawlingKato();
+  //   crawlingKta();
+  // }
+  //
+  // //크롤링 반복 20초마다
+  // setInterval(crawling, 20000);
 
-  //크롤링 반복 20초마다
-  setInterval(crawling, 20000);
+  crawlingKato();
 }
 
 export default start;
